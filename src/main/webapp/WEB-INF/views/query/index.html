@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Часы</title>
+    <div th:insert="~{fragments/template :: head}"></div>
+</head>
+<body>
+<div th:insert="~{fragments/template :: navigation}"></div>
+
+<div class="container-fluid">
+    <main class="col-sm p-3 mt-5">
+        <h6>Запрос 1</h6>
+        <p>часы заданного типа </p>
+        <form class="form-control bg-light m-2 w-25" th:method="POST" th:action="@{/query/query1}" th:object="${clock}">
+            <div class="mb-3 mt-3">
+                <label for="type">Тип часов</label>
+                <select class="form-control" th:object="${clock}" th:field="*{id}" id="type">
+                    <option  th:each="clock : ${clocks}" th:value="${clock.getId()}" th:text="${clock.getTypeClock()}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-outline-success" >Выбрать</button>
+        </form>
+        <br>
+        <hr/>
+        <h6>Запрос 2</h6>
+        <p>часы заданного типа, цена на которые в заданном диапазоне</p>
+        <form class="form-control bg-light m-2 w-25" th:method="POST" th:action="@{/query/query2}" th:object="${clock}">
+            <div class="mb-3 mt-3">
+                <label for="min">Минимальная цена</label>
+                <input class="form-control" name="min" type="number" id="min"/>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="max">Минимальная цена</label>
+                <input class="form-control" name="max" type="number" id="max"/>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="type2">Тип часов</label>
+                <select class="form-control" th:object="${clock}" th:field="*{id}" id="type2">
+                    <option  th:each="clock : ${clocks}" th:value="${clock.getId()}" th:text="${clock.getTypeClock()}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-outline-success" >Выбрать</button>
+        </form>
+        <br><hr/>
+        <h6>Запрос 3</h6>
+        <p>часах, произведенных в заданной стране </p>
+        <form class="form-control bg-light m-2 w-25" th:method="POST" th:action="@{/query/query3}" th:object="${country}">
+            <div class="mb-3 mt-3">
+                <label for="country">Выберите страну</label>
+                <select class="form-control" th:object="${country}" th:field="*{id}" id="country">
+                    <option  th:each="country : ${countries}" th:value="${country.getId()}" th:text="${country.getTitle()}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-outline-success" >Выбрать</button>
+        </form>
+        <br><hr/>
+        <form class="form-control bg-light m-2 w-25" th:method="POST" th:action="@{/query/query4}">
+            <div class="mb-3 mt-3">
+                <label for="date_min">Начальная дата</label>
+                <input class="form-control" name="date_min" type="text" id="date_min"/>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="date_max">Конечная дата</label>
+                <input class="form-control" name="date_max" type="text" id="date_max"/>
+            </div>
+            <button type="submit" class="btn btn-outline-success" >Выбрать</button>
+        </form>
+    </main>
+</div>
+</body>
+</html>

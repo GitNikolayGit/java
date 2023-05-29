@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Продажи</title>
+    <div th:insert="~{fragments/template :: head}"></div>
+</head>
+<body>
+<div th:insert="~{fragments/template :: navigation}"></div>
+
+<div class="container-fluid">
+    <main class="col-sm p-3 mt-5">
+        <a class="btn btn-secondary active" href="/sales/new">Добавить</a>
+        <br/>
+        <hr/>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>№</th>
+                <th>Дата продажи</th>
+                <th>Продавец</th>
+                <th>Часы</th>
+                <th>Цена для продажи</th>
+                <th>Количество</th>
+                <th>Сумма продажи</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody th:each="sale : ${sales_list}">
+            <tr>
+                <td th:text="${sale.getId()}">id</td>
+                <td th:text="${sale.getDate_sales()}">date_buy</td>
+                <td th:text="${sale.getSellers()}">sellers</td>
+                <td th:text="${sale.getClock()}">clock</td>
+                <td th:text="${sale.getEnd_price()}">end price</td>
+                <td th:text="${sale.getCount_clock()}">count</td>
+                <td th:text="${sale.sum_sales()}">clock price</td>
+                <td>
+                    <form th:method="DELETE" th:action="@{/sales/{id}/delete(id=${sale.getId()})}">
+                        <input type="submit" value="удалить"/>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </main>
+</div>
+</body>
+</html>

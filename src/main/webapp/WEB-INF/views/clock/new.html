@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Добавить часы</title>
+    <div th:insert="~{fragments/template :: head}"></div>
+</head>
+<body>
+<div th:insert="~{fragments/template :: navigation}"></div>
+
+<div class="container-fluid">
+    <main class="col-sm-6 p-3 mt-5">
+        <form th:method="POST" th:action="@{/clock}" th:object="${clock}">
+            <div th:insert="~{fragments/template :: createClock}"></div>
+            <div class="mb-3 mt-3">
+                <input type="submit" value="Готово"/>
+            </div>
+        </form>
+    </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Главная</title>
+    <div th:insert="~{fragments/template :: head}"></div>
+    <script src="lib/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body  >
+<div th:insert="~{fragments/template :: navigation}"></div>
+
+<div class="container-fluid">
+    <main class="col-sm p-3 mt-5">
+        <h4>Часовой магазин Bestwatch в ТЦ «Никольская Плаза»</h4>
+        <p><b>ТЦ «Никольская Плаза»</b> Москва, Никольская ул., 10</p>
+        <p>телефон: +7 (495) 190-75-07 </p>
+        <img th:src="@{/img/plaza.jpg}"  width="50%" alt="Штучка"/>
+
+    </main>
+</div>
+</body>
+</html>
+
+
